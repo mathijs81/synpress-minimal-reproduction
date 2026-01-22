@@ -19,4 +19,13 @@ pnpm test:e2e
 
 The metamask extension gets unlocked once in the first tab, but keeps opening new tabs to be unlocked again.
 
+Screenshot:
 ![Screenshot of the error](./screenshot.png)
+
+The console then gives errors like
+```
+[getNotificationPageAndWaitForLoad] Failed to get notification page, retrying (attempt 1/2)...
+[getNotificationPageAndWaitForLoad] Failed to get notification page, retrying (attempt 2/2)...
+```
+and finally the test fails.
+
