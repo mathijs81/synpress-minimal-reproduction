@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Web3 Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 20px;
+    }
+    #balance-label {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #connect-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="balance-label">hello world</div>
+  <button id="connect-btn">Connect Wallet</button>
+
+  <script type="module">
+    const connectBtn = document.getElementById('connect-btn');
+    const balanceLabel = document.getElementById('balance-label');
+
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({
+            method: 'eth_requestAccounts'
+          });
+
+          if (accounts.length > 0) {
+            const balance = await window.ethereum.request({
+              method: 'eth_getBalance',
+              params: [accounts[0], 'latest']
+            });
+
+            const ethBalance = parseInt(balance, 16) / 1e18;
+            balanceLabel.textContent = `${ethBalance.toFixed(4)} ETH`;
+          }
+        } catch (error) {
+          console.error('Failed to connect wallet:', error);
+          balanceLabel.textContent = 'Connection failed';
+        }
+      } else {
+        balanceLabel.textContent = 'No wallet found';
+      }
+    }
+
+    connectBtn.addEventListener('click', connectWallet);
+  </script>
+</body>
+</html>

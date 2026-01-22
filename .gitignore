@@ -1,0 +1,4 @@
+node_modules
+.cache-synpress
+playwright-report
+test-results

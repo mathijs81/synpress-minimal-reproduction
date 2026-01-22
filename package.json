@@ -1,0 +1,22 @@
+{
+  "name": "minimal",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "serve": "serve . -p 4173",
+    "test:e2e": "playwright test",
+    "test:e2e:build-cache": "synpress"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@synthetixio/synpress": "^4.1.2",
+    "@vitest/browser-playwright": "^4.0.17",
+    "playwright": "^1.57.0",
+    "serve": "^14.2.5",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "playwright-core": "1.48.2"
+  }
+}
